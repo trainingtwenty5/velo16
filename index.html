@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <!-- Google Consent Mode v2 – domyślna blokada -->
     <script>
@@ -33,7 +33,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Velo16 Paweł Buchar – Części, odzież i akcesoria rowerowe</title>
+    <title>Velo16 Paweł Buchar – Bicycle parts, clothing & accessories</title>
 
     <style>
         :root {
@@ -229,6 +229,7 @@
             color: var(--text-gray);
             font-size: 1.05rem;
             margin-bottom: 24px;
+            line-height: 1.7;
         }
 
         .two-columns {
@@ -487,7 +488,7 @@
         }
         .cookie-btn.deny-all:hover { background: #f0f0f0; }
 
-        /* ─── FOOTER ─── */
+        /* ─── FOOTER (3 kolumny) ─── */
         .page-footer {
             background: var(--footer-bg);
             color: var(--footer-text);
@@ -500,7 +501,7 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
@@ -509,9 +510,9 @@
         .footer-grid h4 { color: #fff; font-size: 1rem; margin-bottom: 12px; font-weight: 600; }
         .footer-grid .contact-line { font-size: 0.9rem; margin-bottom: 4px; }
 
-        /* ─── RESPONSIVE ─── */
+        /* ─── RESPONSIVE (poprawki dla telefonów) ─── */
         @media (max-width: 768px) {
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
             .company-card h1 { font-size: 1.5rem; }
             .tab-button { padding: 10px 14px; font-size: 0.85rem; }
             .tab-content { padding: 16px 18px; }
@@ -519,6 +520,14 @@
             .language-switch { gap: 2px; }
             .lang-btn { padding: 3px 8px; font-size: 0.8rem; }
             .lang-btn img { width: 18px; height: 12px; }
+            .company-card { padding: 20px 16px; }
+            .info-box { padding: 16px; }
+            .description {
+                font-size: 0.95rem;
+                text-align: left;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -526,6 +535,41 @@
             .two-columns { grid-template-columns: 1fr; }
             .header-top-row { flex-direction: column; align-items: stretch; }
             .language-switch { justify-content: center; }
+            .description {
+                font-size: 0.9rem;
+                line-height: 1.55;
+            }
+        }
+
+        /* Styl dla flag w banerze cookies */
+        .cookie-lang-switch {
+            display: flex;
+            justify-content: flex-end;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .cookie-lang-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+            transition: all 0.2s;
+        }
+        .cookie-lang-btn img {
+            width: 20px;
+            height: 14px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+        .cookie-lang-btn.active {
+            border-color: var(--main-color);
+            background: var(--main-color-light);
         }
     </style>
 </head>
@@ -542,17 +586,17 @@
         <div class="header-up">
             <div class="layout">
                 <div class="header-top-row">
-                    <a href="/" class="logo-site" aria-label="Strona główna">
+                    <a href="/" class="logo-site" aria-label="Home">
                         <img src="img/velo16-logo.jpg" alt="Velo16 logo">
                     </a>
-                    <div class="language-switch" role="group" aria-label="Wybór języka">
-                        <button class="lang-btn active" data-lang="pl">
+                    <div class="language-switch" role="group" aria-label="Language selection">
+                        <button type="button" class="lang-btn" data-lang="pl">
                             <img src="img/flags/pl.png" alt="PL"> PL
                         </button>
-                        <button class="lang-btn" data-lang="en">
+                        <button type="button" class="lang-btn active" data-lang="en">
                             <img src="img/flags/en.png" alt="EN"> EN
                         </button>
-                        <button class="lang-btn" data-lang="de">
+                        <button type="button" class="lang-btn" data-lang="de">
                             <img src="img/flags/de.png" alt="DE"> DE
                         </button>
                     </div>
@@ -565,9 +609,9 @@
     <div class="breadcrumb-nav">
         <div class="layout">
             <ol class="breadcrumb">
-                <li><a href="/" id="bc-home">Strona główna</a></li>
-                <li><a href="#" id="bc-wholesale">Sprzedaż hurtowa</a></li>
-                <li><a href="#" id="bc-special">Sklepy specjalistyczne</a></li>
+                <li><a href="/" id="bc-home">Home</a></li>
+                <li><a href="#" id="bc-wholesale">Wholesale</a></li>
+                <li><a href="#" id="bc-special">Specialty stores</a></li>
                 <li class="active" id="bc-current">Velo16 Paweł Buchar</li>
             </ol>
         </div>
@@ -576,29 +620,25 @@
     <!-- ─── MAIN ─── -->
     <div id="main">
         <div class="layout">
-
-            <!-- Karta firmy -->
             <div class="company-card">
                 <h1 id="company-name">Velo16 Paweł Buchar</h1>
-                <div class="subtitle" id="company-subtitle">Witamy w Velo16</div>
+                <div class="subtitle" id="company-subtitle">Welcome to Velo16</div>
                 <div class="address-line">
                     <span class="map-pin" aria-hidden="true"></span>
-                    <span id="company-address">Suchardy 4 lok. 8, 50-362 Wrocław, woj. dolnośląskie</span>
+                    <span id="company-address">Suchardy 4 lok. 8, 50-362 Wrocław, Lower Silesia</span>
                 </div>
-
                 <div class="description" id="main-description">
-                    Zajmujemy się sprzedażą części, odzieży oraz akcesoriów rowerowych. Dzięki elastycznemu podejściu i stałemu dostępowi do towarów z dystrybucji, zagranicznych nadwyżek magazynowych oraz likwidacji stoków, dostarczamy interesujące towary w dobrych cenach. Zapraszamy do bezpośredniej współpracy – zapewniamy elastyczne warunki i szybką realizację zamówień. Zapewniamy stale zmieniający się, różnorodny asortyment – od podstawowych części eksploatacyjnych po sprzęt premium. Chcesz podjąć współpracę lub szukasz konkretnego towaru? Skontaktuj się z nami bezpośrednio!
+                    We sell bicycle parts, clothing and accessories. Thanks to a flexible approach and constant access to goods from distribution, foreign warehouse surpluses and stock clearances, we deliver interesting products at good prices. We invite you to direct cooperation – we offer flexible terms and fast order fulfillment. We provide a constantly changing, diverse range – from basic consumable parts to premium equipment. Do you want to cooperate or are you looking for a specific product? Contact us directly!
                 </div>
-
                 <div class="two-columns">
                     <div class="info-box">
-                        <h2 id="why-title">Dlaczego my?</h2>
-                        <p id="why-list">Niskie ceny<br>Wysoka jakość<br>Prosty i szybki kontakt</p>
+                        <h2 id="why-title">Why us?</h2>
+                        <p id="why-list">Low prices<br>High quality<br>Simple & fast contact</p>
                     </div>
                     <div class="info-box">
-                        <h2 id="contact-title">Potrzebujesz pomocy?</h2>
+                        <h2 id="contact-title">Need help?</h2>
                         <p id="contact-text">
-                            Skontaktuj się z nami:<br>
+                            Contact us:<br>
                             <a class="contact-link" href="mailto:velorwr16@gmail.com">velorwr16@gmail.com</a><br>
                             <a class="contact-link" href="tel:+48726431978">+48 726 431 978</a>
                         </p>
@@ -606,113 +646,103 @@
                 </div>
             </div>
 
-            <!-- Zakładki -->
             <div class="tabs-container">
                 <div class="tabs-header" role="tablist">
-                    <button class="tab-button active" role="tab" aria-selected="true" data-tab="tab-krs" id="tab-btn-krs">
-                        Dane KRS
-                    </button>
-                    <button class="tab-button" role="tab" aria-selected="false" data-tab="tab-info" id="tab-btn-info">
-                        Dodatkowe informacje
-                    </button>
-                    <button class="tab-button" role="tab" aria-selected="false" data-tab="tab-opis" id="tab-btn-opis">
-                        Opis firmy
-                    </button>
+                    <button type="button" class="tab-button active" data-tab="tab-krs" id="tab-btn-krs">KRS data</button>
+                    <button type="button" class="tab-button" data-tab="tab-info" id="tab-btn-info">Additional information</button>
+                    <button type="button" class="tab-button" data-tab="tab-opis" id="tab-btn-opis">Company description</button>
                 </div>
 
-                <!-- Dane KRS -->
                 <div class="tab-content active" id="tab-krs" role="tabpanel">
-                    <h2 id="tab-krs-title">Dane KRS</h2>
+                    <h2 id="tab-krs-title">KRS data</h2>
                     <table class="data-table">
                         <tbody>
-                            <tr><td id="field-name">Pełna nazwa firmy:</td><td>Velo16 Paweł Buchar</td></tr>
+                            <tr><td id="field-name">Full company name:</td><td>Velo16 Paweł Buchar</td></tr>
                             <tr><td>NIP:</td><td>5010069059</td></tr>
                             <tr><td>REGON:</td><td>365134143</td></tr>
-                            <tr><td id="field-address">Adres rejestrowy:</td><td>Suchardy 4 lok. 8, 50-362 Wrocław, woj. dolnośląskie</td></tr>
-                            <tr><td id="field-persons">Osoby decyzyjne:</td><td>Paweł Buchar</td></tr>
-                            <tr><td>PKD:</td><td><span class="tag-pkd">47.63.Z</span><div style="margin-top:6px;" id="pkd-desc">Sprzedaż detaliczna sprzętu sportowego</div></td></tr>
+                            <tr><td id="field-address">Registered address:</td><td>Suchardy 4 lok. 8, 50-362 Wrocław, Lower Silesia</td></tr>
+                            <tr><td id="field-persons">Decision makers:</td><td>Paweł Buchar</td></tr>
+                            <tr><td>PKD:</td><td><span class="tag-pkd">47.63.Z</span><div style="margin-top:6px;" id="pkd-desc">Retail sale of sporting equipment</div></td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Dodatkowe informacje -->
                 <div class="tab-content" id="tab-info" role="tabpanel">
-                    <h2 id="tab-info-title">Dodatkowe informacje</h2>
+                    <h2 id="tab-info-title">Additional information</h2>
                     <table class="data-table">
                         <tbody>
-                            <tr><td id="info-date">Data założenia:</td><td>2016</td></tr>
-                            <tr><td id="info-sector">Sektor:</td><td>Sprzedaż hurtowa</td></tr>
-                            <tr><td id="info-branch">Branża:</td><td>Sklepy specjalistyczne</td></tr>
-                            <tr><td id="info-district">Dzielnica:</td><td>Śródmieście</td></tr>
-                            <tr><td id="info-voivodeship">Województwo:</td><td>dolnośląskie</td></tr>
+                            <tr><td id="info-date">Date of establishment:</td><td>2016</td></tr>
+                            <tr><td id="info-sector">Sector:</td><td>Wholesale</td></tr>
+                            <tr><td id="info-branch">Branch:</td><td>Specialty stores</td></tr>
+                            <tr><td id="info-district">District:</td><td>Śródmieście</td></tr>
+                            <tr><td id="info-voivodeship">Voivodeship:</td><td>Lower Silesia</td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Opis firmy -->
                 <div class="tab-content" id="tab-opis" role="tabpanel">
-                    <h2 id="tab-opis-title">Opis firmy</h2>
+                    <h2 id="tab-opis-title">Company description</h2>
                     <div class="company-description" id="company-full-description">
-                        <p>
-                            Rok 2016 to początek działalności <strong>Velo16 Paweł Buchar</strong>, która działa
-                            w sektorze sprzedaży hurtowej, a zwłaszcza w branży sklepów specjalistycznych.
-                            Siedziba mieści się w miejscowości Wrocław, dzielnica Śródmieście,
-                            województwo dolnośląskie, na ul. Suchardy 4 lok. 8.
-                        </p>
-                        <p>
-                            Podmiot posiada podstawowe dane rejestrowe:
-                            <strong>NIP 5010069059</strong>, <strong>REGON 365134143</strong>.
-                        </p>
-                        <p>
-                            Nasze dane o firmie wskazują, że potencjalnie może zajmować się ona jedną
-                            ze wskazanych usług:
-                        </p>
+                        <p>The year 2016 marked the beginning of <strong>Velo16 Paweł Buchar</strong>, operating in the wholesale sector, especially in the specialty store industry. The headquarters is located in Wrocław, Śródmieście district, Lower Silesian Voivodeship, at 4/8 Suchardy Street.</p>
+                        <p>The entity has basic registration data: <strong>NIP 5010069059</strong>, <strong>REGON 365134143</strong>.</p>
+                        <p>Our company data indicate that it may potentially deal with one of the following services:</p>
                         <ul class="services-list">
-                            <li>Sprzedażą ekskluzywnych win</li>
-                            <li>Dystrybucją ręcznie robionych czekolad</li>
-                            <li>Oferowaniem specjalistycznych narzędzi ogrodniczych</li>
-                            <li>Sprzedażą unikalnych akcesoriów do wnętrz</li>
-                            <li>Handlem rzadkimi gatunkami herbat</li>
+                            <li>Sale of exclusive wines</li>
+                            <li>Distribution of handmade chocolates</li>
+                            <li>Offering specialist gardening tools</li>
+                            <li>Sale of unique interior accessories</li>
+                            <li>Trade in rare tea varieties</li>
                         </ul>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- ─── COOKIE CONSENT ─── -->
+    <!-- ─── COOKIE CONSENT OVERLAY ─── -->
     <div class="cookie-consent-overlay" id="cookieOverlay">
         <div class="cookie-consent" role="dialog" aria-modal="true" aria-labelledby="cookieTitle">
-            <h3 id="cookieTitle">Twoja prywatność</h3>
-            <p id="cookieDesc">Używamy plików cookie, aby zapewnić prawidłowe działanie strony oraz w celach analitycznych i marketingowych. Możesz zaakceptować wszystkie, odrzucić lub dostosować wybór. Szczegóły w <a href="/polityka-prywatnosci" target="_blank">Polityce prywatności</a>.</p>
+            <!-- Dodane flagi do baneru -->
+            <div class="cookie-lang-switch">
+                <button type="button" class="cookie-lang-btn" data-lang="pl">
+                    <img src="img/flags/pl.png" alt="PL">
+                </button>
+                <button type="button" class="cookie-lang-btn active" data-lang="en">
+                    <img src="img/flags/en.png" alt="EN">
+                </button>
+                <button type="button" class="cookie-lang-btn" data-lang="de">
+                    <img src="img/flags/de.png" alt="DE">
+                </button>
+            </div>
+            <h3 id="cookieTitle">Your Privacy</h3>
+            <p id="cookieDesc">We use cookies to ensure the proper functioning of the website and for analytical and marketing purposes. You can accept all, reject, or customize your choice. Details in <a href="/privacy-policy" target="_blank">Privacy Policy</a>.</p>
             <div class="cookie-options">
                 <label class="cookie-option">
                     <input type="checkbox" id="cookieNecessary" checked disabled>
                     <span class="option-text">
-                        <span class="option-title" id="necessaryTitle">Niezbędne</span>
-                        <span class="option-desc" id="necessaryDesc">Wymagane do prawidłowego działania strony.</span>
+                        <span class="option-title" id="necessaryTitle">Necessary</span>
+                        <span class="option-desc" id="necessaryDesc">Required for the proper functioning of the website.</span>
                     </span>
                 </label>
                 <label class="cookie-option">
                     <input type="checkbox" id="cookieAnalytics">
                     <span class="option-text">
-                        <span class="option-title" id="analyticsTitle">Analityczne</span>
-                        <span class="option-desc" id="analyticsDesc">Pozwalają mierzyć ruch i ulepszać stronę (Google Analytics).</span>
+                        <span class="option-title" id="analyticsTitle">Analytics</span>
+                        <span class="option-desc" id="analyticsDesc">Allow us to measure traffic and improve the website (Google Analytics).</span>
                     </span>
                 </label>
                 <label class="cookie-option">
                     <input type="checkbox" id="cookieMarketing">
                     <span class="option-text">
-                        <span class="option-title" id="marketingTitle">Marketingowe</span>
-                        <span class="option-desc" id="marketingDesc">Umożliwiają personalizację reklam (Google Ads, Tag Manager).</span>
+                        <span class="option-title" id="marketingTitle">Marketing</span>
+                        <span class="option-desc" id="marketingDesc">Enable personalized advertising (Google Ads, Tag Manager).</span>
                     </span>
                 </label>
             </div>
             <div class="cookie-buttons">
-                <button class="cookie-btn deny-all" id="denyAllCookies">Odrzuć wszystkie</button>
-                <button class="cookie-btn save" id="saveCookies">Zezwól na wybrane</button>
-                <button class="cookie-btn accept-all" id="acceptAllCookies">Akceptuję wszystkie</button>
+                <button type="button" class="cookie-btn deny-all" id="denyAllCookies">Reject all</button>
+                <button type="button" class="cookie-btn save" id="saveCookies">Allow selected</button>
+                <button type="button" class="cookie-btn accept-all" id="acceptAllCookies">Accept all</button>
             </div>
         </div>
     </div>
@@ -722,27 +752,20 @@
         <div class="layout">
             <div class="footer-grid">
                 <div>
-                    <h4 id="footer-nav">Nawigacja</h4>
+                    <h4 id="footer-nav">Navigation</h4>
                     <ul>
-                        <li><a href="/" id="footer-home">Strona główna</a></li>
-                        <li><a href="#" id="footer-wholesale">Sprzedaż hurtowa</a></li>
-                        <li><a href="#" id="footer-special">Sklepy specjalistyczne</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 id="footer-legal">Informacje prawne</h4>
-                    <ul>
-                        <li><a href="#" id="footer-impressum">Impressum</a></li>
-                        <li><a href="#" id="footer-privacy">Polityka prywatności</a></li>
+                        <li><a href="/" id="footer-home">Home</a></li>
+                        <li><a href="#" id="footer-wholesale">Wholesale</a></li>
+                        <li><a href="#" id="footer-special">Specialty stores</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 id="footer-company">Velo16 Paweł Buchar</h4>
                     <div class="contact-line">Suchardy 4 lok. 8</div>
-                    <div class="contact-line">50-362 Wrocław, woj. dolnośląskie</div>
+                    <div class="contact-line">50-362 Wrocław, Lower Silesia</div>
                 </div>
                 <div>
-                    <h4 id="footer-register">Dane rejestrowe</h4>
+                    <h4 id="footer-register">Registration data</h4>
                     <div class="contact-line">NIP: 5010069059</div>
                     <div class="contact-line">REGON: 365134143</div>
                     <div class="contact-line" style="margin-top:8px;">
@@ -756,7 +779,15 @@
 
     <script>
         (function() {
-            // ─── Pełne tłumaczenia ───
+            // Bezpieczny localStorage
+            function storageGet(key) {
+                try { return localStorage.getItem(key); } catch(e) { return null; }
+            }
+            function storageSet(key, value) {
+                try { localStorage.setItem(key, value); } catch(e) { /* ignore */ }
+            }
+
+            // Tłumaczenia
             const translations = {
                 pl: {
                     bc_home: 'Strona główna',
@@ -791,9 +822,6 @@
                     footer_home: 'Strona główna',
                     footer_wholesale: 'Sprzedaż hurtowa',
                     footer_special: 'Sklepy specjalistyczne',
-                    footer_legal: 'Informacje prawne',
-                    footer_impressum: 'Impressum',
-                    footer_privacy: 'Polityka prywatności',
                     footer_company: 'Velo16 Paweł Buchar',
                     footer_register: 'Dane rejestrowe',
                     cookie_title: 'Twoja prywatność',
@@ -841,13 +869,10 @@
                     footer_home: 'Home',
                     footer_wholesale: 'Wholesale',
                     footer_special: 'Specialty stores',
-                    footer_legal: 'Legal information',
-                    footer_impressum: 'Impressum',
-                    footer_privacy: 'Privacy policy',
                     footer_company: 'Velo16 Paweł Buchar',
                     footer_register: 'Registration data',
                     cookie_title: 'Your Privacy',
-                    cookie_desc: 'We use cookies to ensure the proper functioning of the website and for analytical and marketing purposes. You can accept all, reject, or customize your choice. Details in <a href="/polityka-prywatnosci" target="_blank">Privacy Policy</a>.',
+                    cookie_desc: 'We use cookies to ensure the proper functioning of the website and for analytical and marketing purposes. You can accept all, reject, or customize your choice. Details in <a href="/privacy-policy" target="_blank">Privacy Policy</a>.',
                     necessary: 'Necessary',
                     necessary_desc: 'Required for the proper functioning of the website.',
                     analytics: 'Analytics',
@@ -891,13 +916,10 @@
                     footer_home: 'Startseite',
                     footer_wholesale: 'Großhandel',
                     footer_special: 'Fachgeschäfte',
-                    footer_legal: 'Rechtliche Informationen',
-                    footer_impressum: 'Impressum',
-                    footer_privacy: 'Datenschutzrichtlinie',
                     footer_company: 'Velo16 Paweł Buchar',
                     footer_register: 'Registrierungsdaten',
                     cookie_title: 'Ihre Privatsphäre',
-                    cookie_desc: 'Wir verwenden Cookies, um die ordnungsgemäße Funktion der Website zu gewährleisten sowie für Analyse- und Marketingzwecke. Sie können alle akzeptieren, ablehnen oder Ihre Auswahl anpassen. Details in der <a href="/polityka-prywatnosci" target="_blank">Datenschutzerklärung</a>.',
+                    cookie_desc: 'Wir verwenden Cookies, um die ordnungsgemäße Funktion der Website zu gewährleisten sowie für Analyse- und Marketingzwecke. Sie können alle akzeptieren, ablehnen oder Ihre Auswahl anpassen. Details in der <a href="/datenschutz" target="_blank">Datenschutzerklärung</a>.',
                     necessary: 'Notwendig',
                     necessary_desc: 'Erforderlich für die ordnungsgemäße Funktion der Website.',
                     analytics: 'Analyse',
@@ -910,8 +932,8 @@
                 }
             };
 
-            // ─── Pobranie elementów ───
-            const elements = {
+            // Elementy strony
+            const els = {
                 bc_home: document.getElementById('bc-home'),
                 bc_wholesale: document.getElementById('bc-wholesale'),
                 bc_special: document.getElementById('bc-special'),
@@ -944,9 +966,6 @@
                 footer_home: document.getElementById('footer-home'),
                 footer_wholesale: document.getElementById('footer-wholesale'),
                 footer_special: document.getElementById('footer-special'),
-                footer_legal: document.getElementById('footer-legal'),
-                footer_impressum: document.getElementById('footer-impressum'),
-                footer_privacy: document.getElementById('footer-privacy'),
                 footer_company: document.getElementById('footer-company'),
                 footer_register: document.getElementById('footer-register'),
                 cookie_title: document.getElementById('cookieTitle'),
@@ -963,73 +982,86 @@
             };
 
             const langButtons = document.querySelectorAll('.lang-btn');
+            const cookieLangButtons = document.querySelectorAll('.cookie-lang-btn');
 
             function setLanguage(lang) {
                 if (!translations[lang]) return;
                 const t = translations[lang];
 
-                elements.bc_home.textContent = t.bc_home;
-                elements.bc_wholesale.textContent = t.bc_wholesale;
-                elements.bc_special.textContent = t.bc_special;
-                elements.bc_current.textContent = t.bc_current;
+                // Aktualizacja tekstów na stronie
+                els.bc_home.textContent = t.bc_home;
+                els.bc_wholesale.textContent = t.bc_wholesale;
+                els.bc_special.textContent = t.bc_special;
+                els.bc_current.textContent = t.bc_current;
+                els.company_name.textContent = t.company_name;
+                els.company_subtitle.textContent = t.company_subtitle;
+                els.company_address.textContent = t.company_address;
+                els.main_description.textContent = t.main_description;
+                els.why_title.textContent = t.why_title;
+                els.why_list.innerHTML = t.why_list;
+                els.contact_title.textContent = t.contact_title;
+                els.contact_text.innerHTML = t.contact_text;
+                els.tab_krs_btn.textContent = t.tab_krs_btn;
+                els.tab_info_btn.textContent = t.tab_info_btn;
+                els.tab_opis_btn.textContent = t.tab_opis_btn;
+                els.tab_krs_title.textContent = t.tab_krs_title;
+                els.tab_info_title.textContent = t.tab_info_title;
+                els.tab_opis_title.textContent = t.tab_opis_title;
+                els.field_name.textContent = t.field_name;
+                els.field_address.textContent = t.field_address;
+                els.field_persons.textContent = t.field_persons;
+                els.pkd_desc.textContent = t.pkd_desc;
+                els.info_date.textContent = t.info_date;
+                els.info_sector.textContent = t.info_sector;
+                els.info_branch.textContent = t.info_branch;
+                els.info_district.textContent = t.info_district;
+                els.info_voivodeship.textContent = t.info_voivodeship;
+                els.full_description.innerHTML = t.full_description;
+                els.footer_nav.textContent = t.footer_nav;
+                els.footer_home.textContent = t.footer_home;
+                els.footer_wholesale.textContent = t.footer_wholesale;
+                els.footer_special.textContent = t.footer_special;
+                els.footer_company.textContent = t.footer_company;
+                els.footer_register.textContent = t.footer_register;
 
-                elements.company_name.textContent = t.company_name;
-                elements.company_subtitle.textContent = t.company_subtitle;
-                elements.company_address.textContent = t.company_address;
-                elements.main_description.textContent = t.main_description;
-                elements.why_title.textContent = t.why_title;
-                elements.why_list.innerHTML = t.why_list;
-                elements.contact_title.textContent = t.contact_title;
-                elements.contact_text.innerHTML = t.contact_text;
+                // Aktualizacja baneru cookies
+                els.cookie_title.textContent = t.cookie_title;
+                els.cookie_desc.innerHTML = t.cookie_desc;
+                els.necessaryTitle.textContent = t.necessary;
+                els.necessaryDesc.textContent = t.necessary_desc;
+                els.analyticsTitle.textContent = t.analytics;
+                els.analyticsDesc.textContent = t.analytics_desc;
+                els.marketingTitle.textContent = t.marketing;
+                els.marketingDesc.textContent = t.marketing_desc;
+                els.denyAll.textContent = t.deny_all;
+                els.save.textContent = t.save;
+                els.acceptAll.textContent = t.accept_all;
 
-                elements.tab_krs_btn.textContent = t.tab_krs_btn;
-                elements.tab_info_btn.textContent = t.tab_info_btn;
-                elements.tab_opis_btn.textContent = t.tab_opis_btn;
-                elements.tab_krs_title.textContent = t.tab_krs_title;
-                elements.tab_info_title.textContent = t.tab_info_title;
-                elements.tab_opis_title.textContent = t.tab_opis_title;
-
-                elements.field_name.textContent = t.field_name;
-                elements.field_address.textContent = t.field_address;
-                elements.field_persons.textContent = t.field_persons;
-                elements.pkd_desc.textContent = t.pkd_desc;
-
-                elements.info_date.textContent = t.info_date;
-                elements.info_sector.textContent = t.info_sector;
-                elements.info_branch.textContent = t.info_branch;
-                elements.info_district.textContent = t.info_district;
-                elements.info_voivodeship.textContent = t.info_voivodeship;
-
-                elements.full_description.innerHTML = t.full_description;
-
-                elements.footer_nav.textContent = t.footer_nav;
-                elements.footer_home.textContent = t.footer_home;
-                elements.footer_wholesale.textContent = t.footer_wholesale;
-                elements.footer_special.textContent = t.footer_special;
-                elements.footer_legal.textContent = t.footer_legal;
-                elements.footer_impressum.textContent = t.footer_impressum;
-                elements.footer_privacy.textContent = t.footer_privacy;
-                elements.footer_company.textContent = t.footer_company;
-                elements.footer_register.textContent = t.footer_register;
-
-                elements.cookie_title.textContent = t.cookie_title;
-                elements.cookie_desc.innerHTML = t.cookie_desc;
-                elements.necessaryTitle.textContent = t.necessary;
-                elements.necessaryDesc.textContent = t.necessary_desc;
-                elements.analyticsTitle.textContent = t.analytics;
-                elements.analyticsDesc.textContent = t.analytics_desc;
-                elements.marketingTitle.textContent = t.marketing;
-                elements.marketingDesc.textContent = t.marketing_desc;
-                elements.denyAll.textContent = t.deny_all;
-                elements.save.textContent = t.save;
-                elements.acceptAll.textContent = t.accept_all;
-
+                // Aktualizacja przycisków językowych (obu grup)
                 langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
-                localStorage.setItem('velo16_lang', lang);
+                cookieLangButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+
+                storageSet('velo16_lang', lang);
                 document.documentElement.lang = lang;
             }
 
-            setLanguage(localStorage.getItem('velo16_lang') || 'pl');
+            // Domyślny język: angielski
+            const savedLang = storageGet('velo16_lang') || 'en';
+            setLanguage(savedLang);
+
+            // Obsługa kliknięć w nagłówku
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    setLanguage(this.dataset.lang);
+                });
+            });
+
+            // Obsługa kliknięć w banerze cookies
+            cookieLangButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    setLanguage(this.dataset.lang);
+                });
+            });
 
             // ─── Zakładki ───
             const tabButtons = document.querySelectorAll('.tab-button');
@@ -1085,11 +1117,11 @@
                         loadGtag();
                     }
                 }
-                localStorage.setItem('velo16_consent', JSON.stringify({ analytics, marketing }));
+                storageSet('velo16_consent', JSON.stringify({ analytics, marketing }));
                 overlay.classList.remove('show');
             }
 
-            const savedConsent = localStorage.getItem('velo16_consent');
+            const savedConsent = storageGet('velo16_consent');
             if (savedConsent) {
                 const consent = JSON.parse(savedConsent);
                 analyticsCheckbox.checked = consent.analytics;
