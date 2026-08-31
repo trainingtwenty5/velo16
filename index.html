@@ -1,28 +1,20 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-34MD6Y79RL"></script>
+    <!-- Google Consent Mode v2 – domyślna blokada -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'wait_for_update': 500
+        });
         gtag('js', new Date());
         gtag('config', 'G-34MD6Y79RL');
     </script>
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-N88MFV7');
-    </script>
-    <!-- End Google Tag Manager -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +31,8 @@
             --white: #ffffff;
             --radius: 10px;
             --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            --cookie-banner-bg: #ffffff;
+            --cookie-banner-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,11 +50,7 @@
         a { color: var(--main-color); text-decoration: none; transition: color 0.2s; }
         a:hover { color: var(--main-color-second); text-decoration: underline; }
 
-        .layout {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .layout { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
         /* Header */
         .site-header {
@@ -68,7 +58,6 @@
             border-bottom: 1px solid var(--border);
             padding: 16px 0;
         }
-
         .header-inner {
             display: flex;
             align-items: center;
@@ -76,7 +65,6 @@
             flex-wrap: wrap;
             gap: 12px;
         }
-
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
@@ -105,20 +93,11 @@
             transition: all 0.2s;
             font-family: inherit;
         }
-        .lang-btn.active {
-            background: var(--main-color);
-            color: #fff;
-        }
-        .lang-btn:hover:not(.active) {
-            background: var(--main-color-light);
-            color: var(--main-color);
-        }
+        .lang-btn.active { background: var(--main-color); color: #fff; }
+        .lang-btn:hover:not(.active) { background: var(--main-color-light); color: var(--main-color); }
 
         /* Main */
-        .main {
-            flex: 1;
-            padding: 40px 0;
-        }
+        .main { flex: 1; padding: 40px 0; }
 
         .hero-card {
             background: var(--white);
@@ -128,13 +107,7 @@
             margin-bottom: 30px;
             text-align: center;
         }
-
-        .hero-card h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 12px;
-        }
+        .hero-card h1 { font-size: 2.4rem; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
         .hero-card .subtitle {
             color: var(--main-color);
             font-size: 1.2rem;
@@ -158,22 +131,14 @@
         @media (max-width: 700px) {
             .two-columns { grid-template-columns: 1fr; }
         }
-
         .info-box {
             background: var(--main-color-light);
             border-radius: var(--radius);
             padding: 24px;
             text-align: center;
         }
-        .info-box h2 {
-            color: var(--main-color);
-            margin-bottom: 14px;
-            font-size: 1.5rem;
-        }
-        .info-box p {
-            color: var(--dark);
-            font-size: 1rem;
-        }
+        .info-box h2 { color: var(--main-color); margin-bottom: 14px; font-size: 1.5rem; }
+        .info-box p { color: var(--dark); font-size: 1rem; }
         .info-box .contact-link {
             display: block;
             font-size: 1.1rem;
@@ -194,58 +159,130 @@
             justify-content: space-between;
             gap: 20px;
         }
-        .footer-column h4 {
-            color: #fff;
-            margin-bottom: 10px;
-        }
-        .footer-column p, .footer-column div {
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-        }
+        .footer-column h4 { color: #fff; margin-bottom: 10px; }
+        .footer-column p, .footer-column div { font-size: 0.9rem; margin-bottom: 4px; }
         .footer a { color: #ccc; }
         .footer a:hover { color: #fff; }
 
-        /* Cookie banner - prosty */
-        .cookie-banner {
+        /* ─── COOKIE BANNER (RODO) ─── */
+        .cookie-consent-overlay {
             position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-            padding: 18px 24px;
-            max-width: 400px;
-            width: calc(100% - 32px);
-            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 9998;
             display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
         }
-        .cookie-banner.show { display: block; }
-        .cookie-banner p { font-size: 0.9rem; margin-bottom: 12px; }
+        .cookie-consent-overlay.show { display: flex; }
+
+        .cookie-consent {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            max-width: 520px;
+            width: 100%;
+            padding: 28px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .cookie-consent h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .cookie-consent p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        .cookie-consent .cookie-options {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .cookie-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+        }
+        .cookie-option:last-child { border-bottom: none; }
+        .cookie-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--main-color);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .cookie-option .option-text {
+            flex: 1;
+        }
+        .cookie-option .option-title {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+        .cookie-option .option-desc {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 2px;
+        }
         .cookie-buttons {
             display: flex;
-            gap: 8px;
             flex-wrap: wrap;
+            gap: 10px;
+            justify-content: flex-end;
         }
         .cookie-btn {
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border-radius: 24px;
             border: none;
             font-weight: 600;
             cursor: pointer;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .cookie-btn.accept-all {
+            background: var(--main-color);
+            color: #fff;
+        }
+        .cookie-btn.accept-all:hover { background: var(--main-color-second); }
+        .cookie-btn.save {
+            background: var(--main-color-light);
+            color: var(--main-color);
+        }
+        .cookie-btn.save:hover { background: #d4e9e9; }
+        .cookie-btn.deny-all {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--gray);
+        }
+        .cookie-btn.deny-all:hover { background: #f0f0f0; }
+        .cookie-settings-link {
+            background: none;
+            border: none;
+            color: var(--main-color);
+            text-decoration: underline;
+            cursor: pointer;
             font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 10px;
             font-family: inherit;
         }
-        .cookie-btn.allow { background: var(--main-color); color: #fff; }
-        .cookie-btn.deny { background: transparent; border: 1px solid var(--border); color: var(--gray); }
+        .cookie-settings-link:hover { color: var(--main-color-second); }
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) – tylko po zgodzie, ale nie będzie działać bez js; zostawiam dla zgodności -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N88MFV7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Nagłówek -->
     <header class="site-header">
         <div class="layout header-inner">
             <div class="logo">Velo<span>16</span></div>
@@ -257,11 +294,9 @@
         </div>
     </header>
 
-    <!-- Główna treść -->
     <main class="main">
         <div class="layout">
             <div class="hero-card">
-                <!-- Tekst będzie podmieniany przez JS wg języka -->
                 <h1 id="main-title">Velo16 – części, odzież i akcesoria rowerowe</h1>
                 <div class="subtitle" id="main-subtitle">Witamy w Velo16</div>
                 <div class="description" id="main-description">
@@ -270,17 +305,13 @@
                 <div class="two-columns">
                     <div class="info-box">
                         <h2 id="why-title">Dlaczego my?</h2>
-                        <p id="why-list">
-                            Niskie ceny<br>
-                            Wysoka jakość<br>
-                            Prosty i szybki kontakt
-                        </p>
+                        <p id="why-list">Niskie ceny<br>Wysoka jakość<br>Prosty i szybki kontakt</p>
                     </div>
                     <div class="info-box">
                         <h2 id="contact-title">Potrzebujesz pomocy?</h2>
                         <p id="contact-text">
                             Skontaktuj się z nami:<br>
-                            <a class="contact-link" href="mailto:velorwr16@gmail.com">velorwr16@gmail.com</a>
+                            <a class="contact-link" href="mailto:velorwr16@gmail.com">velorwr16@gmail.com</a><br>
                             <a class="contact-link" href="tel:+48726431978">+48 726 431 978</a>
                         </p>
                     </div>
@@ -289,7 +320,6 @@
         </div>
     </main>
 
-    <!-- Stopka -->
     <footer class="footer">
         <div class="layout footer-grid">
             <div class="footer-column">
@@ -310,18 +340,45 @@
         </div>
     </footer>
 
-    <!-- Baner cookies -->
-    <div class="cookie-banner" id="cookieBanner">
-        <p>Ta strona używa plików cookies w celach statystycznych i funkcjonalnych. <a href="#">Polityka prywatności</a></p>
-        <div class="cookie-buttons">
-            <button class="cookie-btn deny" id="denyCookies">Tylko niezbędne</button>
-            <button class="cookie-btn allow" id="allowCookies">Zezwól na wszystkie</button>
+    <!-- COOKIE CONSENT OVERLAY -->
+    <div class="cookie-consent-overlay" id="cookieOverlay">
+        <div class="cookie-consent" role="dialog" aria-modal="true" aria-labelledby="cookieTitle">
+            <h3 id="cookieTitle">Twoja prywatność</h3>
+            <p>Używamy plików cookie, aby zapewnić prawidłowe działanie strony oraz w celach analitycznych i marketingowych. Możesz zaakceptować wszystkie, odrzucić lub dostosować wybór. Szczegóły w <a href="/polityka-prywatnosci" target="_blank">Polityce prywatności</a>.</p>
+            <div class="cookie-options">
+                <label class="cookie-option">
+                    <input type="checkbox" id="cookieNecessary" checked disabled>
+                    <span class="option-text">
+                        <span class="option-title">Niezbędne</span>
+                        <span class="option-desc">Wymagane do prawidłowego działania strony.</span>
+                    </span>
+                </label>
+                <label class="cookie-option">
+                    <input type="checkbox" id="cookieAnalytics">
+                    <span class="option-text">
+                        <span class="option-title">Analityczne</span>
+                        <span class="option-desc">Pozwalają mierzyć ruch i ulepszać stronę (Google Analytics).</span>
+                    </span>
+                </label>
+                <label class="cookie-option">
+                    <input type="checkbox" id="cookieMarketing">
+                    <span class="option-text">
+                        <span class="option-title">Marketingowe</span>
+                        <span class="option-desc">Umożliwiają personalizację reklam (Google Ads, Tag Manager).</span>
+                    </span>
+                </label>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn deny-all" id="denyAllCookies">Odrzuć wszystkie</button>
+                <button class="cookie-btn save" id="saveCookies">Zezwól na wybrane</button>
+                <button class="cookie-btn accept-all" id="acceptAllCookies">Akceptuję wszystkie</button>
+            </div>
         </div>
     </div>
 
     <script>
         (function() {
-            // ─── Treści w trzech językach ───
+            // ─── Treści językowe ───
             const translations = {
                 pl: {
                     title: 'Velo16 – części, odzież i akcesoria rowerowe',
@@ -352,7 +409,6 @@
                 }
             };
 
-            // ─── Elementy do podmiany ───
             const els = {
                 title: document.getElementById('main-title'),
                 subtitle: document.getElementById('main-subtitle'),
@@ -368,7 +424,6 @@
             function setLanguage(lang) {
                 if (!translations[lang]) return;
                 const t = translations[lang];
-                // Podmiana tekstu
                 els.title.textContent = t.title;
                 els.subtitle.textContent = t.subtitle;
                 els.description.textContent = t.description;
@@ -376,55 +431,92 @@
                 els.whyList.innerHTML = t.whyList;
                 els.contactTitle.textContent = t.contactTitle;
                 els.contactText.innerHTML = t.contactText;
-
-                // Aktualizacja przycisków
-                langButtons.forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.lang === lang);
-                });
-
-                // Zapis wyboru
+                langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
                 localStorage.setItem('velo16_lang', lang);
-                // Aktualizacja atrybutu lang html
                 document.documentElement.lang = lang;
             }
 
-            // Obsługa kliknięć
-            langButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    setLanguage(btn.dataset.lang);
+            langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+            setLanguage(localStorage.getItem('velo16_lang') || 'pl');
+
+            // ─── Zarządzanie zgodą cookies ───
+            const overlay = document.getElementById('cookieOverlay');
+            const analyticsCheckbox = document.getElementById('cookieAnalytics');
+            const marketingCheckbox = document.getElementById('cookieMarketing');
+
+            function loadGTM() {
+                // Ładuje Google Tag Manager (zawiera GA4)
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N88MFV7');
+            }
+
+            function loadGtag() {
+                // Bezpośrednio ładuje gtag.js (jeśli GTM nie wystarczy)
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-34MD6Y79RL';
+                document.head.appendChild(script);
+                script.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-34MD6Y79RL');
+                };
+            }
+
+            function applyConsent(analytics, marketing) {
+                // Aktualizacja Consent Mode
+                gtag('consent', 'update', {
+                    'ad_storage': marketing ? 'granted' : 'denied',
+                    'ad_user_data': marketing ? 'granted' : 'denied',
+                    'ad_personalization': marketing ? 'granted' : 'denied',
+                    'analytics_storage': analytics ? 'granted' : 'denied'
                 });
+                // Ładowanie skryptów po raz pierwszy, jeśli zgoda
+                if (analytics || marketing) {
+                    // GTM ładuje zarówno analitykę jak i marketing, ale jeśli użytkownik wybrał tylko analitykę, lepiej załadować gtag bezpośrednio.
+                    // Dla uproszczenia: ładujemy GTM tylko gdy marketing=true, w innym przypadku gtag.js.
+                    if (marketing) {
+                        loadGTM();
+                    } else if (analytics) {
+                        loadGtag();
+                    }
+                    // Jeśli oba false – nic nie ładujemy.
+                }
+                // Zapis zgody
+                localStorage.setItem('velo16_consent', JSON.stringify({ analytics, marketing }));
+                overlay.classList.remove('show');
+            }
+
+            // Sprawdź zapisaną zgodę
+            const savedConsent = localStorage.getItem('velo16_consent');
+            if (savedConsent) {
+                const consent = JSON.parse(savedConsent);
+                analyticsCheckbox.checked = consent.analytics;
+                marketingCheckbox.checked = consent.marketing;
+                applyConsent(consent.analytics, consent.marketing);
+            } else {
+                // Pokaż baner po krótkim opóźnieniu
+                setTimeout(() => overlay.classList.add('show'), 800);
+            }
+
+            // Przyciski
+            document.getElementById('acceptAllCookies').addEventListener('click', () => {
+                analyticsCheckbox.checked = true;
+                marketingCheckbox.checked = true;
+                applyConsent(true, true);
             });
 
-            // Wczytaj zapisany język (domyślnie PL)
-            const savedLang = localStorage.getItem('velo16_lang') || 'pl';
-            setLanguage(savedLang);
+            document.getElementById('denyAllCookies').addEventListener('click', () => {
+                analyticsCheckbox.checked = false;
+                marketingCheckbox.checked = false;
+                applyConsent(false, false);
+            });
 
-            // ─── Cookie banner ───
-            const cookieBanner = document.getElementById('cookieBanner');
-            const allowBtn = document.getElementById('allowCookies');
-            const denyBtn = document.getElementById('denyCookies');
+            document.getElementById('saveCookies').addEventListener('click', () => {
+                applyConsent(analyticsCheckbox.checked, marketingCheckbox.checked);
+            });
 
-            if (!localStorage.getItem('velo16_cookies')) {
-                setTimeout(() => cookieBanner.classList.add('show'), 1000);
-            }
-
-            function hideCookieBanner(choice) {
-                localStorage.setItem('velo16_cookies', choice);
-                cookieBanner.classList.remove('show');
-                if (choice === 'deny') {
-                    // Wyłącz analitykę (jeśli dotyczy)
-                    if (typeof gtag === 'function') {
-                        gtag('consent', 'update', { 'analytics_storage': 'denied' });
-                    }
-                } else if (choice === 'allow') {
-                    if (typeof gtag === 'function') {
-                        gtag('consent', 'update', { 'analytics_storage': 'granted' });
-                    }
-                }
-            }
-
-            allowBtn.addEventListener('click', () => hideCookieBanner('allow'));
-            denyBtn.addEventListener('click', () => hideCookieBanner('deny'));
+            // Kliknięcie poza modalem nie zamyka (wymuszenie wyboru)
         })();
     </script>
 </body>
