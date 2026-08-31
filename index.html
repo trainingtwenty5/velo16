@@ -33,7 +33,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Velo16 Paweł Buchar – Bicycle parts, clothing & accessories</title>
+    <title>Velo16 – Bicycle parts, clothing & accessories</title>
 
     <style>
         :root {
@@ -95,6 +95,7 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            gap: 10px;
         }
 
         .logo-site img {
@@ -102,6 +103,13 @@
             width: auto;
             display: block;
             border-radius: 6px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--main-color);
+            letter-spacing: 1px;
         }
 
         .language-switch {
@@ -148,36 +156,6 @@
             color: var(--main-color);
         }
 
-        /* ─── BREADCRUMB ─── */
-        .breadcrumb-nav {
-            background: var(--white);
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 0;
-            font-size: 0.9rem;
-        }
-
-        .breadcrumb {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            align-items: center;
-        }
-
-        .breadcrumb li {
-            display: flex;
-            align-items: center;
-        }
-
-        .breadcrumb li + li::before {
-            content: '/';
-            margin: 0 8px;
-            color: var(--text-gray);
-        }
-
-        .breadcrumb li a { color: var(--main-color); }
-        .breadcrumb li.active { color: var(--text-gray); font-weight: 500; }
-
         /* ─── MAIN ─── */
         #main {
             flex: 1;
@@ -190,38 +168,6 @@
             box-shadow: var(--shadow);
             padding: 30px 28px;
             margin-bottom: 30px;
-        }
-
-        .company-card h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
-        .company-card .subtitle {
-            color: var(--main-color);
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 16px;
-        }
-
-        .address-line {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-gray);
-            font-size: 1rem;
-            margin-bottom: 12px;
-        }
-
-        .map-pin {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%231a6b3c"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>') no-repeat center;
-            background-size: contain;
-            flex-shrink: 0;
         }
 
         .description {
@@ -513,7 +459,6 @@
         /* ─── RESPONSIVE (poprawki dla telefonów) ─── */
         @media (max-width: 768px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
-            .company-card h1 { font-size: 1.5rem; }
             .tab-button { padding: 10px 14px; font-size: 0.85rem; }
             .tab-content { padding: 16px 18px; }
             .data-table td:first-child { width: 140px; font-size: 0.85rem; }
@@ -528,6 +473,7 @@
                 line-height: 1.6;
                 margin-bottom: 20px;
             }
+            .logo-text { font-size: 1.5rem; }
         }
 
         @media (max-width: 480px) {
@@ -588,6 +534,7 @@
                 <div class="header-top-row">
                     <a href="/" class="logo-site" aria-label="Home">
                         <img src="img/velo16-logo.jpg" alt="Velo16 logo">
+                        <span class="logo-text">Velo16</span>
                     </a>
                     <div class="language-switch" role="group" aria-label="Language selection">
                         <button type="button" class="lang-btn" data-lang="pl">
@@ -605,28 +552,10 @@
         </div>
     </div>
 
-    <!-- ─── BREADCRUMB ─── -->
-    <div class="breadcrumb-nav">
-        <div class="layout">
-            <ol class="breadcrumb">
-                <li><a href="/" id="bc-home">Home</a></li>
-                <li><a href="#" id="bc-wholesale">Wholesale</a></li>
-                <li><a href="#" id="bc-special">Specialty stores</a></li>
-                <li class="active" id="bc-current">Velo16 Paweł Buchar</li>
-            </ol>
-        </div>
-    </div>
-
     <!-- ─── MAIN ─── -->
     <div id="main">
         <div class="layout">
             <div class="company-card">
-                <h1 id="company-name">Velo16 Paweł Buchar</h1>
-                <div class="subtitle" id="company-subtitle">Welcome to Velo16</div>
-                <div class="address-line">
-                    <span class="map-pin" aria-hidden="true"></span>
-                    <span id="company-address">Suchardy 4 lok. 8, 50-362 Wrocław, Lower Silesia</span>
-                </div>
                 <div class="description" id="main-description">
                     We sell bicycle parts, clothing and accessories. Thanks to a flexible approach and constant access to goods from distribution, foreign warehouse surpluses and stock clearances, we deliver interesting products at good prices. We invite you to direct cooperation – we offer flexible terms and fast order fulfillment. We provide a constantly changing, diverse range – from basic consumable parts to premium equipment. Do you want to cooperate or are you looking for a specific product? Contact us directly!
                 </div>
@@ -636,9 +565,8 @@
                         <p id="why-list">Low prices<br>High quality<br>Simple & fast contact</p>
                     </div>
                     <div class="info-box">
-                        <h2 id="contact-title">Need help?</h2>
+                        <h2 id="contact-title">Contact us:</h2>
                         <p id="contact-text">
-                            Contact us:<br>
                             <a class="contact-link" href="mailto:velorwr16@gmail.com">velorwr16@gmail.com</a><br>
                             <a class="contact-link" href="tel:+48726431978">+48 726 431 978</a>
                         </p>
@@ -702,7 +630,6 @@
     <!-- ─── COOKIE CONSENT OVERLAY ─── -->
     <div class="cookie-consent-overlay" id="cookieOverlay">
         <div class="cookie-consent" role="dialog" aria-modal="true" aria-labelledby="cookieTitle">
-            <!-- Dodane flagi do baneru -->
             <div class="cookie-lang-switch">
                 <button type="button" class="cookie-lang-btn" data-lang="pl">
                     <img src="img/flags/pl.png" alt="PL">
@@ -790,18 +717,11 @@
             // Tłumaczenia
             const translations = {
                 pl: {
-                    bc_home: 'Strona główna',
-                    bc_wholesale: 'Sprzedaż hurtowa',
-                    bc_special: 'Sklepy specjalistyczne',
-                    bc_current: 'Velo16 Paweł Buchar',
-                    company_name: 'Velo16 Paweł Buchar',
-                    company_subtitle: 'Witamy w Velo16',
-                    company_address: 'Suchardy 4 lok. 8, 50-362 Wrocław, woj. dolnośląskie',
                     main_description: 'Zajmujemy się sprzedażą części, odzieży oraz akcesoriów rowerowych. Dzięki elastycznemu podejściu i stałemu dostępowi do towarów z dystrybucji, zagranicznych nadwyżek magazynowych oraz likwidacji stoków, dostarczamy interesujące towary w dobrych cenach. Zapraszamy do bezpośredniej współpracy – zapewniamy elastyczne warunki i szybką realizację zamówień. Zapewniamy stale zmieniający się, różnorodny asortyment – od podstawowych części eksploatacyjnych po sprzęt premium. Chcesz podjąć współpracę lub szukasz konkretnego towaru? Skontaktuj się z nami bezpośrednio!',
                     why_title: 'Dlaczego my?',
                     why_list: 'Niskie ceny<br>Wysoka jakość<br>Prosty i szybki kontakt',
-                    contact_title: 'Potrzebujesz pomocy?',
-                    contact_text: 'Skontaktuj się z nami:<br><a class="contact-link" href="mailto:velorwr16@gmail.com">velorwr16@gmail.com</a><br><a class="contact-link" href="tel:+48726431978">+48 726 431 978</a>',
+                    contact_title: 'Skontaktuj się z nami:',
+                    contact_text: '<a class="contact-link" href="mailto:velorwr16@gmail.com">velorwr16@gmail.com</a><br><a class="contact-link" href="tel:+48726431978">+48 726 431 978</a>',
                     tab_krs_btn: 'Dane KRS',
                     tab_info_btn: 'Dodatkowe informacje',
                     tab_opis_btn: 'Opis firmy',
@@ -837,18 +757,11 @@
                     accept_all: 'Akceptuję wszystkie'
                 },
                 en: {
-                    bc_home: 'Home',
-                    bc_wholesale: 'Wholesale',
-                    bc_special: 'Specialty stores',
-                    bc_current: 'Velo16 Paweł Buchar',
-                    company_name: 'Velo16 Paweł Buchar',
-                    company_subtitle: 'Welcome to Velo16',
-                    company_address: 'Suchardy 4 lok. 8, 50-362 Wrocław, Lower Silesia',
                     main_description: 'We sell bicycle parts, clothing and accessories. Thanks to a flexible approach and constant access to goods from distribution, foreign warehouse surpluses and stock clearances, we deliver interesting products at good prices. We invite you to direct cooperation – we offer flexible terms and fast order fulfillment. We provide a constantly changing, diverse range – from basic consumable parts to premium equipment. Do you want to cooperate or are you looking for a specific product? Contact us directly!',
                     why_title: 'Why us?',
                     why_list: 'Low prices<br>High quality<br>Simple & fast contact',
-                    contact_title: 'Need help?',
-                    contact_text: 'Contact us:<br><a class="contact-link" href="mailto:velorwr16@gmail.com">velorwr16@gmail.com</a><br><a class="contact-link" href="tel:+48726431978">+48 726 431 978</a>',
+                    contact_title: 'Contact us:',
+                    contact_text: '<a class="contact-link" href="mailto:velorwr16@gmail.com">velorwr16@gmail.com</a><br><a class="contact-link" href="tel:+48726431978">+48 726 431 978</a>',
                     tab_krs_btn: 'KRS data',
                     tab_info_btn: 'Additional information',
                     tab_opis_btn: 'Company description',
@@ -884,18 +797,11 @@
                     accept_all: 'Accept all'
                 },
                 de: {
-                    bc_home: 'Startseite',
-                    bc_wholesale: 'Großhandel',
-                    bc_special: 'Fachgeschäfte',
-                    bc_current: 'Velo16 Paweł Buchar',
-                    company_name: 'Velo16 Paweł Buchar',
-                    company_subtitle: 'Willkommen bei Velo16',
-                    company_address: 'Suchardy 4 lok. 8, 50-362 Wrocław, Niederschlesien',
                     main_description: 'Wir verkaufen Fahrradteile, Bekleidung und Zubehör. Durch flexible Herangehensweise und ständigen Zugriff auf Waren aus dem Vertrieb, ausländische Lagerüberschüsse und Lagerräumungen liefern wir interessante Produkte zu guten Preisen. Wir laden zur direkten Zusammenarbeit ein – wir bieten flexible Konditionen und schnelle Auftragsabwicklung. Wir bieten ein ständig wechselndes, vielfältiges Sortiment – von einfachen Verschleißteilen bis hin zu Premium-Ausrüstung. Möchten Sie zusammenarbeiten oder suchen Sie ein bestimmtes Produkt? Kontaktieren Sie uns direkt!',
                     why_title: 'Warum wir?',
                     why_list: 'Niedrige Preise<br>Hohe Qualität<br>Einfacher & schneller Kontakt',
-                    contact_title: 'Brauchen Sie Hilfe?',
-                    contact_text: 'Kontaktieren Sie uns:<br><a class="contact-link" href="mailto:velorwr16@gmail.com">velorwr16@gmail.com</a><br><a class="contact-link" href="tel:+48726431978">+48 726 431 978</a>',
+                    contact_title: 'Kontaktieren Sie uns:',
+                    contact_text: '<a class="contact-link" href="mailto:velorwr16@gmail.com">velorwr16@gmail.com</a><br><a class="contact-link" href="tel:+48726431978">+48 726 431 978</a>',
                     tab_krs_btn: 'KRS-Daten',
                     tab_info_btn: 'Zusätzliche Informationen',
                     tab_opis_btn: 'Firmenbeschreibung',
@@ -934,13 +840,6 @@
 
             // Elementy strony
             const els = {
-                bc_home: document.getElementById('bc-home'),
-                bc_wholesale: document.getElementById('bc-wholesale'),
-                bc_special: document.getElementById('bc-special'),
-                bc_current: document.getElementById('bc-current'),
-                company_name: document.getElementById('company-name'),
-                company_subtitle: document.getElementById('company-subtitle'),
-                company_address: document.getElementById('company-address'),
                 main_description: document.getElementById('main-description'),
                 why_title: document.getElementById('why-title'),
                 why_list: document.getElementById('why-list'),
@@ -989,13 +888,6 @@
                 const t = translations[lang];
 
                 // Aktualizacja tekstów na stronie
-                els.bc_home.textContent = t.bc_home;
-                els.bc_wholesale.textContent = t.bc_wholesale;
-                els.bc_special.textContent = t.bc_special;
-                els.bc_current.textContent = t.bc_current;
-                els.company_name.textContent = t.company_name;
-                els.company_subtitle.textContent = t.company_subtitle;
-                els.company_address.textContent = t.company_address;
                 els.main_description.textContent = t.main_description;
                 els.why_title.textContent = t.why_title;
                 els.why_list.innerHTML = t.why_list;
@@ -1037,7 +929,7 @@
                 els.save.textContent = t.save;
                 els.acceptAll.textContent = t.accept_all;
 
-                // Aktualizacja przycisków językowych (obu grup)
+                // Aktualizacja przycisków językowych
                 langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
                 cookieLangButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
 
