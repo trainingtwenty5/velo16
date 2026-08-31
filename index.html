@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-34MD6Y79RL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-34MD6Y79RL');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N88MFV7');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Velo16 Paweł Buchar — Wrocław, woj. dolnośląskie</title>
+
+    <style>
+        :root {
+            --main-color: #1a6b3c;
+            --main-color-second: #2a8f53;
+            --main-color-light: #eaf7f7;
+            --text-dark: #2c2c2c;
+            --text-gray: #6b6b6b;
+            --border-color: #e0e0e0;
+            --bg-light: #f9f9f9;
+            --star-color: #f5a623;
+            --header-up-bg: #f8f8f8;
+            --footer-bg: #2c2c2c;
+            --footer-text: #cccccc;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Condensed', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: #f4f4f4;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: var(--main-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--main-color-second);
+            text-decoration: underline;
+        }
+
+        /* ─── HEADER ─── */
+        .header-wrapper {
+            background: var(--white);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-up {
+            background: var(--header-up-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .header-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 8px 0;
+        }
+
+        .logo-site img {
+            max-height: 48px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: var(--main-color-light);
+            text-decoration: none;
+        }
+
+        .nav-links .btn-login,
+        .nav-links .btn-signup {
+            background: var(--main-color);
+            color: #fff !important;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .nav-links .btn-login:hover,
+        .nav-links .btn-signup:hover {
+            background: var(--main-color-second);
+            text-decoration: none;
+        }
+
+        .nav-links .btn-signup {
+            background: transparent;
+            color: var(--main-color) !important;
+            border: 2px solid var(--main-color);
+        }
+
+        .nav-links .btn-signup:hover {
+            background: var(--main-color);
+            color: #fff !important;
+        }
+
+        /* ─── BREADCRUMB ─── */
+        .breadcrumb-nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb-nav .breadcrumb {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .breadcrumb-nav .breadcrumb li {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb-nav .breadcrumb li + li::before {
+            content: '/';
+            margin: 0 8px;
+            color: var(--text-gray);
+        }
+
+        .breadcrumb-nav .breadcrumb li a {
+            color: var(--main-color);
+        }
+
+        .breadcrumb-nav .breadcrumb li.active {
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* ─── MAIN ─── */
+        #main {
+            flex: 1;
+            padding: 24px 0 40px;
+        }
+
+        .company-header-card {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            padding: 24px 28px;
+            margin-bottom: 20px;
+        }
+
+        .company-header-card h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .company-header-card .address-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+        }
+
+        .map-pin {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%231a6b3c"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>') no-repeat center;
+            background-size: contain;
+            flex-shrink: 0;
+        }
+
+        .rating-stars {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .rating-stars .star {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23d0d0d0"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+
+        .rating-stars .star.filled {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23f5a623"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>');
+        }
+
+        .rating-text {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-left: 6px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--main-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--main-color-second);
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--main-color);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* ─── TABS ─── */
+        .tabs-container {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .tabs-header {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 2px solid var(--border-color);
+            background: var(--bg-light);
+        }
+
+        .tab-button {
+            padding: 14px 24px;
+            background: transparent;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            font-family: inherit;
+        }
+
+        .tab-button:hover {
+            color: var(--main-color);
+            background: var(--main-color-light);
+        }
+
+        .tab-button.active {
+            color: var(--main-color);
+            border-bottom-color: var(--main-color);
+            background: var(--white);
+        }
+
+        .tab-content {
+            padding: 24px 28px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-content h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .data-table td {
+            padding: 10px 4px;
+            vertical-align: top;
+            font-size: 0.95rem;
+        }
+
+        .data-table td:first-child {
+            font-weight: 600;
+            color: var(--text-gray);
+            width: 200px;
+            white-space: nowrap;
+        }
+
+        .data-table td:last-child {
+            color: var(--text-dark);
+        }
+
+        .tag-pkd {
+            display: inline-block;
+            background: var(--main-color-light);
+            color: var(--main-color);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .company-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .company-description p {
+            margin-bottom: 12px;
+        }
+
+        .services-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 12px;
+        }
+
+        .services-list li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .services-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--main-color);
+            font-weight: bold;
+        }
+
+        .no-reviews {
+            text-align: center;
+            padding: 32px 16px;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+
+        /* ─── COOKIE CONSENT ─── */
+        .cc-window {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+            padding: 18px 24px;
+            z-index: 9999;
+            max-width: 420px;
+            width: calc(100% - 32px);
+            display: none;
+        }
+
+        .cc-window.show {
+            display: block;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .cc-message {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .cc-message a {
+            color: var(--main-color);
+            font-weight: 600;
+        }
+
+        .cc-compliance {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .cc-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .cc-btn.cc-allow {
+            background: var(--main-color);
+            color: #fff;
+        }
+
+        .cc-btn.cc-allow:hover {
+            background: var(--main-color-second);
+        }
+
+        .cc-btn.cc-deny {
+            background: transparent;
+            color: var(--text-gray);
+            border: 1px solid var(--border-color);
+        }
+
+        .cc-btn.cc-deny:hover {
+            background: var(--bg-light);
+        }
+
+        /* ─── FOOTER ─── */
+        .page-footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 32px 0;
+            margin-top: auto;
+        }
+
+        .page-footer a {
+            color: var(--footer-text);
+        }
+
+        .page-footer a:hover {
+            color: #fff;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .footer-grid ul {
+            list-style: none;
+        }
+
+        .footer-grid li {
+            margin-bottom: 8px;
+        }
+
+        .footer-grid h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .footer-grid .contact-line {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .company-header-card h1 {
+                font-size: 1.5rem;
+            }
+
+            .tab-button {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+            }
+
+            .tab-content {
+                padding: 16px 18px;
+            }
+
+            .data-table td:first-child {
+                width: 140px;
+                font-size: 0.85rem;
+            }
+
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links .btn-login,
+            .nav-links .btn-signup {
+                padding: 4px 12px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .header-top-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N88MFV7" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- ─── HEADER ─── -->
+    <div class="header-wrapper">
+        <div class="header-up">
+            <div class="layout">
+                <div class="header-top-row">
+                    <a href="/" class="logo-site" aria-label="Strona główna">
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='48'><rect width='180' height='48' rx='6' fill='%231a6b3c'/><text x='90' y='31' text-anchor='middle' font-family='Arial, sans-serif' font-weight='bold' font-size='18' fill='white'>Velo16</text></svg>"
+                        alt="Velo16 Paweł Buchar logo">
+                    </a>
+                    <div class="nav-links">
+                        <a href="/">Strona główna</a>
+                        <a href="#">Sprzedaż hurtowa</a>
+                        <a href="#">Sklepy specjalistyczne</a>
+                        <a href="#" class="btn-login">Zaloguj</a>
+                        <a href="#" class="btn-signup">Zarejestruj</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── BREADCRUMB ─── -->
+    <div class="breadcrumb-nav">
+        <div class="layout">
+            <ol class="breadcrumb">
+                <li><a href="/">Strona główna</a></li>
+                <li><a href="#">Sprzedaż hurtowa</a></li>
+                <li><a href="#">Sklepy specjalistyczne</a></li>
+                <li class="active">Velo16 Paweł Buchar</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- ─── MAIN ─── -->
+    <div id="main">
+        <div class="layout">
+
+            <!-- Karta nagłówkowa firmy -->
+            <div class="company-header-card">
+                <h1>Velo16 Paweł Buchar</h1>
+                <div class="address-line">
+                    <span class="map-pin" aria-hidden="true"></span>
+                    <span>Suchardy 4 lok. 8, 50-362 Wrocław, woj. dolnośląskie</span>
+                </div>
+
+                <div class="rating-stars" aria-label="Ocena 0 na 5">
+                    <span class="star" aria-hidden="true"></span>
+                    <span class="star" aria-hidden="true"></span>
+                    <span class="star" aria-hidden="true"></span>
+                    <span class="star" aria-hidden="true"></span>
+                    <span class="star" aria-hidden="true"></span>
+                    <span class="rating-text">Średnia ocen z 0 opinii</span>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" type="button">Dodaj opinię</button>
+                    <button class="btn btn-outline" type="button">Aktualizuj dane</button>
+                </div>
+            </div>
+
+            <!-- Zakładki -->
+            <div class="tabs-container">
+                <div class="tabs-header" role="tablist">
+                    <button class="tab-button active" role="tab" aria-selected="true" data-tab="tab-krs">
+                        Dane KRS
+                    </button>
+                    <button class="tab-button" role="tab" aria-selected="false" data-tab="tab-info">
+                        Dodatkowe informacje
+                    </button>
+                    <button class="tab-button" role="tab" aria-selected="false" data-tab="tab-opis">
+                        Opis firmy
+                    </button>
+                    <button class="tab-button" role="tab" aria-selected="false" data-tab="tab-opinie">
+                        Opinie
+                    </button>
+                </div>
+
+                <!-- Dane KRS -->
+                <div class="tab-content active" id="tab-krs" role="tabpanel">
+                    <h2>Dane KRS</h2>
+                    <table class="data-table">
+                        <tbody>
+                            <tr>
+                                <td>Pełna nazwa firmy:</td>
+                                <td>Velo16 Paweł Buchar</td>
+                            </tr>
+                            <tr>
+                                <td>NIP:</td>
+                                <td>5010069059</td>
+                            </tr>
+                            <tr>
+                                <td>REGON:</td>
+                                <td>365134143</td>
+                            </tr>
+                            <tr>
+                                <td>Adres rejestrowy:</td>
+                                <td>Suchardy 4 lok. 8, 50-362 Wrocław, woj. dolnośląskie</td>
+                            </tr>
+                            <tr>
+                                <td>Osoby decyzyjne:</td>
+                                <td>Paweł Buchar</td>
+                            </tr>
+                            <tr>
+                                <td>PKD:</td>
+                                <td>
+                                    <span class="tag-pkd">47.63.Z</span>
+                                    <div style="margin-top: 6px;">Sprzedaż detaliczna sprzętu sportowego</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Dodatkowe informacje -->
+                <div class="tab-content" id="tab-info" role="tabpanel">
+                    <h2>Dodatkowe informacje</h2>
+                    <table class="data-table">
+                        <tbody>
+                            <tr>
+                                <td>Data założenia:</td>
+                                <td>2016</td>
+                            </tr>
+                            <tr>
+                                <td>Branża:</td>
+                                <td>Sklepy specjalistyczne</td>
+                            </tr>
+                            <tr>
+                                <td>Sektor:</td>
+                                <td>Sprzedaż hurtowa</td>
+                            </tr>
+                            <tr>
+                                <td>Dzielnica:</td>
+                                <td>Śródmieście</td>
+                            </tr>
+                            <tr>
+                                <td>Województwo:</td>
+                                <td>dolnośląskie</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Opis firmy -->
+                <div class="tab-content" id="tab-opis" role="tabpanel">
+                    <h2>Opis firmy</h2>
+                    <div class="company-description">
+                        <p>
+                            Rok 2016 to początek działalności <strong>Velo16 Paweł Buchar</strong>, która działa
+                            w sektorze sprzedaży hurtowej, a zwłaszcza w branży sklepów specjalistycznych.
+                            Siedziba mieści się w miejscowości Wrocław, dzielnica Śródmieście,
+                            województwo dolnośląskie, na ul. Suchardy 4 lok. 8.
+                        </p>
+                        <p>
+                            Podmiot posiada podstawowe dane rejestrowe:
+                            <strong>NIP 5010069059</strong>, <strong>REGON 365134143</strong>.
+                        </p>
+                        <p>
+                            Nasze dane o firmie wskazują, że potencjalnie może zajmować się ona jedną
+                            ze wskazanych usług:
+                        </p>
+                        <ul class="services-list">
+                            <li>Sprzedażą ekskluzywnych win</li>
+                            <li>Dystrybucją ręcznie robionych czekolad</li>
+                            <li>Oferowaniem specjalistycznych narzędzi ogrodniczych</li>
+                            <li>Sprzedażą unikalnych akcesoriów do wnętrz</li>
+                            <li>Handlem rzadkimi gatunkami herbat</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Opinie -->
+                <div class="tab-content" id="tab-opinie" role="tabpanel">
+                    <h2>Opinie</h2>
+                    <div class="no-reviews">
+                        Brak opinii dla tej firmy.<br>
+                        Bądź pierwszy i <a href="#" style="font-weight:600;">dodaj opinię</a>.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ─── COOKIE CONSENT ─── -->
+    <div class="cc-window" id="cookieConsent" role="dialog" aria-live="polite" aria-label="Polityka cookies">
+        <div class="cc-message">
+            Ta strona wykorzystuje pliki cookies, aby zapewnić najlepsze doświadczenia.
+            <a href="/polityka-prywatnosci" target="_blank" rel="noopener noreferrer">Polityka prywatności</a>
+        </div>
+        <div class="cc-compliance">
+            <button class="cc-btn cc-deny" id="cookieDenyBtn" type="button">Tylko niezbędne</button>
+            <button class="cc-btn cc-allow" id="cookieAllowBtn" type="button">Zezwól na wszystkie</button>
+        </div>
+    </div>
+
+    <!-- ─── FOOTER ─── -->
+    <div class="page-footer">
+        <div class="layout">
+            <div class="footer-grid">
+                <div>
+                    <h4>Nawigacja</h4>
+                    <ul>
+                        <li><a href="/">Strona główna</a></li>
+                        <li><a href="#">Sprzedaż hurtowa</a></li>
+                        <li><a href="#">Sklepy specjalistyczne</a></li>
+                        <li><a href="#">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Informacje prawne</h4>
+                    <ul>
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Polityka prywatności</a></li>
+                        <li><a href="#">Regulamin (AGB)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Velo16 Paweł Buchar</h4>
+                    <div class="contact-line">Suchardy 4 lok. 8</div>
+                    <div class="contact-line">50-362 Wrocław, woj. dolnośląskie</div>
+                    <div class="contact-line">NIP: 5010069059</div>
+                    <div class="contact-line">REGON: 365134143</div>
+                </div>
+                <div>
+                    <h4>Godziny pracy</h4>
+                    <div class="contact-line">Poniedziałek – Piątek</div>
+                    <div class="contact-line">09:00 – 18:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SCRIPTS ─── -->
+    <script>
+        (function() {
+            // ── Zakładki ──
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+
+                    // Usuń aktywność ze wszystkich przycisków
+                    tabButtons.forEach(function(btn) {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-selected', 'false');
+                    });
+
+                    // Ukryj wszystkie treści
+                    tabContents.forEach(function(content) {
+                        content.classList.remove('active');
+                    });
+
+                    // Aktywuj wybrany przycisk i treść
+                    this.classList.add('active');
+                    this.setAttribute('aria-selected', 'true');
+                    const targetContent = document.getElementById(targetTab);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+
+            // ── Cookie Consent ──
+            const cookieConsent = document.getElementById('cookieConsent');
+            const allowBtn = document.getElementById('cookieAllowBtn');
+            const denyBtn = document.getElementById('cookieDenyBtn');
+
+            // Sprawdź, czy użytkownik już podjął decyzję
+            const cookieChoice = localStorage.getItem('cookieConsentChoice');
+
+            if (cookieChoice === null) {
+                // Pokaż okno po krótkim opóźnieniu
+                setTimeout(function() {
+                    cookieConsent.classList.add('show');
+                }, 800);
+            }
+
+            function setCookieChoice(choice) {
+                localStorage.setItem('cookieConsentChoice', choice);
+                cookieConsent.classList.remove('show');
+
+                if (choice === 'deny') {
+                    // Wyłącz śledzenie GA (jeśli dotyczy)
+                    if (typeof gtag === 'function') {
+                        gtag('consent', 'update', {
+                            'analytics_storage': 'denied'
+                        });
+                    }
+                } else if (choice === 'allow') {
+                    if (typeof gtag === 'function') {
+                        gtag('consent', 'update', {
+                            'analytics_storage': 'granted'
+                        });
+                    }
+                }
+            }
+
+            if (allowBtn) {
+                allowBtn.addEventListener('click', function() {
+                    setCookieChoice('allow');
+                });
+            }
+
+            if (denyBtn) {
+                denyBtn.addEventListener('click', function() {
+                    setCookieChoice('deny');
+                });
+            }
+
+            // ── Przyciski akcji ──
+            const addReviewBtn = document.querySelector('.btn-primary');
+            if (addReviewBtn) {
+                addReviewBtn.addEventListener('click', function() {
+                    alert('Formularz dodawania opinii zostanie wkrótce udostępniony.');
+                });
+            }
+
+            const updateDataBtn = document.querySelector('.btn-outline');
+            if (updateDataBtn) {
+                updateDataBtn.addEventListener('click', function() {
+                    alert('Formularz aktualizacji danych zostanie wkrótce udostępniony.');
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
