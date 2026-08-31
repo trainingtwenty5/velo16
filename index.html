@@ -37,18 +37,18 @@
 
     <style>
         :root {
-            --main-color: #1a6b3c;
-            --main-color-second: #2a8f53;
-            --main-color-light: #eaf7f7;
-            --text-dark: #2c2c2c;
-            --text-gray: #6b6b6b;
-            --border-color: #e0e0e0;
+            --main-color: #000000;
+            --main-color-second: #333333;
+            --main-color-light: #f0f0f0;
+            --text-dark: #000000;
+            --text-gray: #555555;
+            --border-color: #cccccc;
             --bg-light: #f9f9f9;
             --white: #ffffff;
+            --footer-bg: #000000;
+            --footer-text: #ffffff;
             --radius: 8px;
             --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            --footer-bg: #2c2c2c;
-            --footer-text: #cccccc;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,7 +56,7 @@
         body {
             font-family: 'Roboto Condensed', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--text-dark);
-            background-color: #f4f4f4;
+            background-color: var(--white);
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
@@ -78,7 +78,7 @@
         }
 
         .header-up {
-            background: #f8f8f8;
+            background: var(--bg-light);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -116,7 +116,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            background: var(--bg-light);
+            background: var(--white);
             padding: 4px;
             border-radius: 20px;
             border: 1px solid var(--border-color);
@@ -426,7 +426,7 @@
         .cookie-btn.accept-all { background: var(--main-color); color: #fff; }
         .cookie-btn.accept-all:hover { background: var(--main-color-second); }
         .cookie-btn.save { background: var(--main-color-light); color: var(--main-color); }
-        .cookie-btn.save:hover { background: #d4e9e9; }
+        .cookie-btn.save:hover { background: #e0e0e0; }
         .cookie-btn.deny-all {
             background: transparent;
             border: 1px solid var(--border-color);
@@ -434,7 +434,7 @@
         }
         .cookie-btn.deny-all:hover { background: #f0f0f0; }
 
-        /* ─── FOOTER (3 kolumny) ─── */
+        /* ─── FOOTER ─── */
         .page-footer {
             background: var(--footer-bg);
             color: var(--footer-text);
@@ -443,7 +443,7 @@
         }
 
         .page-footer a { color: var(--footer-text); }
-        .page-footer a:hover { color: #fff; }
+        .page-footer a:hover { color: #ddd; }
 
         .footer-grid {
             display: grid;
@@ -456,7 +456,24 @@
         .footer-grid h4 { color: #fff; font-size: 1rem; margin-bottom: 12px; font-weight: 600; }
         .footer-grid .contact-line { font-size: 0.9rem; margin-bottom: 4px; }
 
-        /* ─── RESPONSIVE (poprawki dla telefonów) ─── */
+        .cookie-settings-row {
+            margin-top: 20px;
+            text-align: center;
+            border-top: 1px solid #444;
+            padding-top: 16px;
+        }
+        .cookie-settings-link {
+            background: none;
+            border: none;
+            color: #fff;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+        .cookie-settings-link:hover { color: #ccc; }
+
+        /* ─── RESPONSIVE ─── */
         @media (max-width: 768px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .tab-button { padding: 10px 14px; font-size: 0.85rem; }
@@ -487,7 +504,6 @@
             }
         }
 
-        /* Styl dla flag w banerze cookies */
         .cookie-lang-switch {
             display: flex;
             justify-content: flex-end;
@@ -701,6 +717,9 @@
                     </div>
                 </div>
             </div>
+            <div class="cookie-settings-row">
+                <button class="cookie-settings-link" id="openCookieSettings">Ustawienia cookies</button>
+            </div>
         </div>
     </footer>
 
@@ -754,7 +773,8 @@
                     marketing_desc: 'Umożliwiają personalizację reklam (Google Ads, Tag Manager).',
                     deny_all: 'Odrzuć wszystkie',
                     save: 'Zezwól na wybrane',
-                    accept_all: 'Akceptuję wszystkie'
+                    accept_all: 'Akceptuję wszystkie',
+                    cookie_settings: 'Ustawienia cookies'
                 },
                 en: {
                     main_description: 'We sell bicycle parts, clothing and accessories. Thanks to a flexible approach and constant access to goods from distribution, foreign warehouse surpluses and stock clearances, we deliver interesting products at good prices. We invite you to direct cooperation – we offer flexible terms and fast order fulfillment. We provide a constantly changing, diverse range – from basic consumable parts to premium equipment. Do you want to cooperate or are you looking for a specific product? Contact us directly!',
@@ -794,7 +814,8 @@
                     marketing_desc: 'Enable personalized advertising (Google Ads, Tag Manager).',
                     deny_all: 'Reject all',
                     save: 'Allow selected',
-                    accept_all: 'Accept all'
+                    accept_all: 'Accept all',
+                    cookie_settings: 'Cookie settings'
                 },
                 de: {
                     main_description: 'Wir verkaufen Fahrradteile, Bekleidung und Zubehör. Durch flexible Herangehensweise und ständigen Zugriff auf Waren aus dem Vertrieb, ausländische Lagerüberschüsse und Lagerräumungen liefern wir interessante Produkte zu guten Preisen. Wir laden zur direkten Zusammenarbeit ein – wir bieten flexible Konditionen und schnelle Auftragsabwicklung. Wir bieten ein ständig wechselndes, vielfältiges Sortiment – von einfachen Verschleißteilen bis hin zu Premium-Ausrüstung. Möchten Sie zusammenarbeiten oder suchen Sie ein bestimmtes Produkt? Kontaktieren Sie uns direkt!',
@@ -834,7 +855,8 @@
                     marketing_desc: 'Ermöglichen personalisierte Werbung (Google Ads, Tag Manager).',
                     deny_all: 'Alle ablehnen',
                     save: 'Ausgewählte erlauben',
-                    accept_all: 'Alle akzeptieren'
+                    accept_all: 'Alle akzeptieren',
+                    cookie_settings: 'Cookie-Einstellungen'
                 }
             };
 
@@ -877,7 +899,8 @@
                 marketingDesc: document.getElementById('marketingDesc'),
                 denyAll: document.getElementById('denyAllCookies'),
                 save: document.getElementById('saveCookies'),
-                acceptAll: document.getElementById('acceptAllCookies')
+                acceptAll: document.getElementById('acceptAllCookies'),
+                cookie_settings: document.getElementById('openCookieSettings')
             };
 
             const langButtons = document.querySelectorAll('.lang-btn');
@@ -887,7 +910,7 @@
                 if (!translations[lang]) return;
                 const t = translations[lang];
 
-                // Aktualizacja tekstów na stronie
+                // Aktualizacja tekstów
                 els.main_description.textContent = t.main_description;
                 els.why_title.textContent = t.why_title;
                 els.why_list.innerHTML = t.why_list;
@@ -915,8 +938,6 @@
                 els.footer_special.textContent = t.footer_special;
                 els.footer_company.textContent = t.footer_company;
                 els.footer_register.textContent = t.footer_register;
-
-                // Aktualizacja baneru cookies
                 els.cookie_title.textContent = t.cookie_title;
                 els.cookie_desc.innerHTML = t.cookie_desc;
                 els.necessaryTitle.textContent = t.necessary;
@@ -928,6 +949,7 @@
                 els.denyAll.textContent = t.deny_all;
                 els.save.textContent = t.save;
                 els.acceptAll.textContent = t.accept_all;
+                els.cookie_settings.textContent = t.cookie_settings;
 
                 // Aktualizacja przycisków językowych
                 langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
@@ -941,14 +963,12 @@
             const savedLang = storageGet('velo16_lang') || 'en';
             setLanguage(savedLang);
 
-            // Obsługa kliknięć w nagłówku
             langButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
                     setLanguage(this.dataset.lang);
                 });
             });
 
-            // Obsługa kliknięć w banerze cookies
             cookieLangButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
                     setLanguage(this.dataset.lang);
@@ -1018,7 +1038,7 @@
                 const consent = JSON.parse(savedConsent);
                 analyticsCheckbox.checked = consent.analytics;
                 marketingCheckbox.checked = consent.marketing;
-                applyConsent(consent.analytics, consent.marketing);
+                // Nie wywołujemy applyConsent automatycznie, aby nie ładować ponownie skryptów
             } else {
                 setTimeout(() => overlay.classList.add('show'), 800);
             }
@@ -1037,6 +1057,11 @@
 
             document.getElementById('saveCookies').addEventListener('click', () => {
                 applyConsent(analyticsCheckbox.checked, marketingCheckbox.checked);
+            });
+
+            // Otwieranie ustawień cookies z stopki
+            document.getElementById('openCookieSettings').addEventListener('click', function() {
+                overlay.classList.add('show');
             });
         })();
     </script>
